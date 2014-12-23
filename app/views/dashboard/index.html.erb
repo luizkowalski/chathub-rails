@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to 'Clear cache', dashboard_clear_cache_path, data: { confirm: "You sure?"} %>
+    <h1>Total messages: <%= @admin_facade.total_messages %></h1>
+  </div>
+
+  <div class="col-md-12">
+    <h1>Total Rooms: <%= @admin_facade.total_rooms %></h1>
+  </div>
+
+  <div class="col-md-12">
+    <h1>Total Users: <%= @admin_facade.total_users %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <hr />
+    <h2>Rooms</h2>
+  </div>
+
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Avatar</th>
+          <th>Name</th>
+          <th>Total messages</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% Room.all.each do |room| %>
+        <tr>
+          <td class="avatar-table"><img src="<%= room.avatar %>" class="room-avatar" /></td>
+          <td><%= link_to room.name, room_path(room.name) %></td>
+          <td><%= room.message_count %></td>
+          </tr>
+       <% end %>
+       </tbody>
+      </table>
+    </div>
+  </div>
+</div>

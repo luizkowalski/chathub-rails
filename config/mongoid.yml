@@ -1,0 +1,37 @@
+production:
+  sessions:
+    default:
+      database: chathub
+      username: chathub
+      password: <%= ENV['MONGOID_PASSOWRD'] %>
+      hosts:
+        - dogen.mongohq.com:10068
+      options:
+        read: :secondary_preferred
+  options:
+    raise_not_found_error: false
+
+development:
+  sessions:
+    default:
+      database: chathub_development
+      hosts:
+        - localhost:27017
+      options:
+  options:
+    raise_not_found_error: false
+
+test:
+  sessions:
+    default:
+      database: chathub_test
+      hosts:
+        - localhost:27017
+      options:
+        read: primary
+        # In the test environment we lower the retries and retry interval to
+        # low amounts for fast failures.
+        max_retries: 1
+        retry_interval: 0
+  options:
+    raise_not_found_error: false

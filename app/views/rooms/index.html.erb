@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-lg-2">
+    <a href="#" class="thumbnail">
+      <img src="<%= current_user.avatar %>" alt="<%= current_user.name %>" class="img-responsive">
+    </a>
+  </div>
+  <div class="col-lg-4">
+    <h2><%= current_user.name %>
+      <small> @<%= current_user.nickname %></small><br />
+      <small> Member since <%= human_date current_user.member_since %></small><br />
+      <small> <%= current_user.company_to_show %></small>
+    </h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <h4><span class="mega-octicon octicon-radio-tower"> </span> Your rooms</h4>
+  </div>
+
+  <div class="col-lg-6">
+    <h4><span class="mega-octicon octicon-rocket"> </span> Top Rooms <small>of last 24h</small></h4>
+  </div>
+
+  <!-- Your Rooms -->
+  <div class="well col-lg-2">
+    <ul class="nav nav-pills nav-stacked">
+      <% for room in current_user.rooms %>
+      <li>
+        <a href="<%= room_path(room.name) %>">
+          <img src="<%= room.avatar %>" class="room-avatar"/> <%= room.name %>
+          <span class="badge"><%= message_count_formatter room.messages.count %></span>
+        </a>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <!-- End Your Rooms -->
+
+  <!-- Top Room -->
+  <div class="col-lg-10">
+
+    <div class="well col-room room-fire">
+
+    </div>
+
+    <div class="well col-room room-fire">
+
+    </div>
+
+    <div class="well col-room room-fire">
+
+    </div>
+  </div>
+  <!-- End Top Room -->
+</div>

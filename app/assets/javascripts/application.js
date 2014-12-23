@@ -1,0 +1,9 @@
+//= require jquery
+//= require jquery_ujs
+//= require websocket_rails/main
+//= require bootstrap
+//= require autogrow.min
+//= require react
+//= require react_ujs
+//= require components
+//= require_tree .

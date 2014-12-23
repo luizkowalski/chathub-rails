@@ -1,0 +1,64 @@
+<div class="row room">
+  <div class="col-lg-2">
+   <a href="#" class="thumbnail">
+    <img src="<%= @room.avatar %>" class="room-avatar-big" />
+  </a>
+    <span class="room-name">
+      @<%= @room.name %>
+    </span>
+  </div>
+
+  <!-- Chat room -->
+    <div class="col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <h3 class="panel-title">What's happening now </h3> <%= link_to "See older chat", transcript_room_path(@room.name), { target: "_blank" } %>
+      </div>
+      <div class="panel-body">
+        <ul class="list-unstyled chat" id="chat-room">
+         <% for message in Message.last_messages_room(@room).reverse do %>
+            <%= react_component('Comment', { message: message.to_send }, { prerender: true }) %>
+          <% end %>
+        </ul>
+      </div>
+       <div class="panel-footer">
+        <%= form_for Message.new, remote: true do |f| %>
+          <%= hidden_field_tag "room_uid", @room.uid %>
+          <%= f.text_area :content, class: "chat-text-field", autocomplete: "off", autofocus: true %>
+        <% end %>
+       </div>
+    </div>
+  </div>
+
+  <!-- Public members -->
+  <div class="col-lg-2 <%= hidden_members(@room) %>">
+    <span class="octicon octicon-person"></span> Public members
+    <div class="well col-lg-12">
+      <ul class="nav nav-pills nav-stacked">
+        <% for user in @room.public_members_sorted %>
+        <li>
+          <img src="<%= asset_path(get_icon_for_user(user, @room)) %>" id="member_<%= user %>"/>
+          <a class="public-member-name" href="#">
+            <%= user %>
+          </a>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    var dispatcher = new WebSocketRails('<%= request.host %>:<%= request.port %>/websocket')
+
+    dispatcher.on_open = function(data) {
+      console.log('Connection has been established');
+    }
+
+    RoomMonitor.init(dispatcher, '<%= @room.uid %>')
+
+    scrollChatRoom();
+    $('.chat-text-field').autogrow();
+  });
+</script>

@@ -1,0 +1,1 @@
+Admin.create(uid: '112706')
