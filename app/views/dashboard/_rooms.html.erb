@@ -1,0 +1,33 @@
+<div class="table-responsive">
+  <table class="table table-hover table-bordered" id="table-rooms">
+
+    <thead>
+    <input type="search" id="searchInput" placeholder="Filter rooms" class="form-control">
+      <tr>
+        <th>Avatar</th>
+        <th>Name</th>
+        <th>Total messages</th>
+        <th>Drop</th>
+      </tr>
+    </thead>
+
+    <tbody id="rooms-table-body">
+      <% Room.all.each do |room| %>
+      <tr>
+        <td class="avatar-table text-center"><img src="<%= room.avatar %>" class="room-avatar-dashboard" /></td>
+        <td>
+          <%= link_to room.name, room_path(room.name) %>
+          <p> <%= room.public_members.size %> <%= 'member'.pluralize(room.public_members.size) %> </p>
+        </td>
+        <td>
+          <%= room.message_count %>
+        </td>
+        <td>
+          <%= link_to 'Drop', dashboard_drop_room_path(room_uid: room.uid),
+                method: :post, class: "button button-primary", data: { confirm: "You sure?" } %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

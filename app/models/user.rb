@@ -44,6 +44,10 @@ class User
     "Works at #{company}" if company
   end
 
+  def location_to_show
+    "#{location}" if location
+  end
+
   def update_last_channel(channel_uid)
     self.last_channel = channel_uid
     save

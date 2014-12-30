@@ -7,6 +7,7 @@
     <title>Chathub</title>
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all'%>
+    <%= stylesheet_link_tag 'http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css' %>
 
     <%= csrf_meta_tags %>
     <!--[if lt IE 9]>
@@ -21,6 +22,8 @@
       <%= render 'helpers/flash' %>
       <%= yield %>
     </div>
+
+    <%= render 'helpers/footer' %>
 
     <%= analytics_init if Rails.env.production? %>
   </body>

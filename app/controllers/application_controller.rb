@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    Admin.find_by(uid: current_user.uid)
+    Admin.find_by(uid: current_user.uid) if current_user
   end
 
   helper_method :current_user, :authenticate, :admin?

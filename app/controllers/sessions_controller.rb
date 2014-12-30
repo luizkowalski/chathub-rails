@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     UserService.new(@user, octokit_client).update_user_organizations
 
     session[:uid] = @user.uid
+    MetricServices.user_signed_in(@user.uid)
     redirect_to rooms_path
   end
 

@@ -1,0 +1,14 @@
+.room-fire {
+  margin-right: 10px;
+}
+
+.col-room {
+  float: left;
+  position: relative;
+  width: 32%;
+  background-color: rgb(253, 253, 253);
+}
+
+.top-room-avatar {
+  width: 25%;
+}

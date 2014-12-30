@@ -1,0 +1,18 @@
+<table class="table table-hover table-bordered">
+  <tbody>
+    <tr>
+      <td><b>Messages sent</b></td>
+      <td class="td-table-data"><%= @admin_facade.total_messages %></td>
+    </tr>
+
+    <tr>
+      <td><b>Rooms</b></td>
+      <td><%= @admin_facade.total_rooms %></td>
+    </tr>
+
+    <tr>
+      <td><b>Users</b></td>
+      <td><%= @admin_facade.total_users %></td>
+    </tr>
+  </tbody>
+</table>

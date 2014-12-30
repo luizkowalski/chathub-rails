@@ -1,16 +1,18 @@
 <div class="row">
 <div class="col-md-12 index-landpage">
  <div class="col-md-6">
- <h3><%= message_count_formatter @admin_facade.total_users %> users sent <%= message_count_formatter @admin_facade.total_messages %> messages!</h3>
+ <h3><%= message_count_formatter @admin_facade.total_users %> users sent <%= message_count_formatter @admin_facade.total_messages %> messages in <%= @admin_facade.total_rooms %> rooms!</h3>
  <h4>be part of it</h4>
  </div>
   <div class="col-md-6 button-login">
     <div class="panel panel-default">
       <div class="panel-body">
       <h4>You don't need any other account or password</h4>
-       <a class="btn btn-success" href="<%= new_session_path %>">
-        Just login with your <span class="octicon octicon-logo-github"></span> account
+      <span class="button-wrap">
+       <a class="button button-glow button-rounded button-highlight button-raised button-pill" href="<%= new_session_path %>">
+        Just click here and login with your <span class="octicon octicon-logo-github"></span> account
       </a>
+      </span>
     </div>
   </div>
 </div>

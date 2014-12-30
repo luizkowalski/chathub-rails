@@ -30,6 +30,6 @@ module Chathub
     config.generators.stylesheets = false
     config.generators.javascripts = false
 
-    config.mongoid.observers = :message_observer
+    config.mongoid.observers = :message_observer, :room_observer, :user_observer
   end
 end

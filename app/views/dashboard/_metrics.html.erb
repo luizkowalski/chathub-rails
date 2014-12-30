@@ -1,0 +1,23 @@
+<div class="table-responsive">
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>User</th>
+        <th>At</th>
+        <th>Custom data</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @admin_facade.last_metrics.each do |metric| %>
+      <tr>
+        <td><%= metric.type %></td>
+        <td><%= metric.user %></td>
+        <td><%= human_date_time metric.at %></td>
+        <td><%= metric.custom_data %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

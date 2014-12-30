@@ -5,14 +5,14 @@ class AdminFacade
   end
 
   def total_messages
-    Rails.cache.fetch("total_messages", expires_in: 24.hours) do
-      Message.count
-    end
+    Message.count
   end
 
   def total_users
-    Rails.cache.fetch("total_users", expires_in: 24.hours) do
-      User.count
-    end
+    User.count
+  end
+
+  def last_metrics
+    Metric.order_by(at: :desc)
   end
 end

@@ -1,3 +1,19 @@
 .avatar-table{
   width: 20%;
 }
+
+.room-avatar-dashboard{
+  width: 30%;
+}
+
+#searchInput {
+  width: 25%;
+}
+
+.dashboard-link {
+  padding: 5px;
+}
+
+.td-table-data{
+  width: 60%;
+}

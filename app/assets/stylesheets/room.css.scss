@@ -1,20 +1,18 @@
+#chat-body {
+  background-image: asset_url('subtle_dots.png');
+}
+
 .room-avatar {
   max-width: 15% !important;
+}
+
+.your-rooms, .public-members {
+  background-color: rgb(253, 253, 253);
 }
 
 .chat-text-field {
   width: 100%;
   padding: 3px;
-}
-
-.room-fire {
-  margin-right: 10px;
-}
-
-.col-room {
-  float: left;
-  position: relative;
-  width: 32%;
 }
 
 .chat {
@@ -40,6 +38,7 @@
   border-radius: 2px;
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
   width: 94%;
+  margin-left: 4px;
 }
 
 .messages p {

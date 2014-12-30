@@ -2,24 +2,30 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="/rooms">
-        <span class="mega-octicon octicon-octoface"></span> ChatHub
+        <span class="octicon octicon-octoface"></span> ChatHub
       </a>
     </div>
 
     <% if current_user %>
-      <%= form_tag(rooms_jump_url, method: "post", class: "navbar-form navbar-left") do %>
-        <div class="form-group">
-          <input type="text" class="form-control" name="room" placeholder="Go to an specific room">
-        </div>
-      <% end %>
+    <%= form_tag(rooms_jump_url, method: "post", class: "navbar-form navbar-left") do %>
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" class="form-control" name="room" placeholder="Go to an specific room">
+        <span class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="ion-ios-paperplane"> </i></button>
+        </span>
+      </div>
 
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href= "<%= logout_path %>" data-confirm="You sure?">
-              <span class="octicon octicon-sign-out"> </span>
-            </a>
-          </li>
-        </ul>
+    </div>
+    <% end %>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href= "<%= logout_path %>" data-confirm="You sure?">
+          <span class="octicon octicon-sign-out"> </span>
+        </a>
+      </li>
+    </ul>
     <% end %>
   </div>
 </nav>

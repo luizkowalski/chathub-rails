@@ -21,15 +21,4 @@ class Room
   def public_members_sorted
     public_members.sort_by{ |word| word.downcase }
   end
-
-  def self.top_rooms
-    Room.collection.aggregate(
-  {
-    "$match" => {"$messages.created_at" => {"$gte" => 1.day.ago}},
-    "$group" => {
-      _id: '$messages', count: {"$sum" => 1}
-    }
-  }
-)
-  end
 end

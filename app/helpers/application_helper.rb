@@ -9,6 +9,10 @@ module ApplicationHelper
   end
 
   def human_date(date)
-    date.strftime("%m %b %Y")
+    date.strftime("%d %b %Y")
+  end
+
+  def human_date_time(date)
+    date.strftime("%d %b %Y, %H:%M:%S - %Z")
   end
 end

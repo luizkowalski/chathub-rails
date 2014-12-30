@@ -5,6 +5,15 @@ class RoomService
     @client = client
   end
 
+  def top_rooms
+    result = Array.new
+    Message.top_rooms_from_messages.each { |room|
+      top_room = Room.find room[:_id]
+      result << TopRoom.new(top_room.avatar, top_room.name, room[:count]) if top_room
+    }
+    result
+  end
+
   def find_or_create_room
     begin
       room = Room.find_by name: @name

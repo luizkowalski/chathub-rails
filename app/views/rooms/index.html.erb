@@ -7,23 +7,24 @@
   <div class="col-lg-4">
     <h2><%= current_user.name %>
       <small> @<%= current_user.nickname %></small><br />
-      <small> Member since <%= human_date current_user.member_since %></small><br />
-      <small> <%= current_user.company_to_show %></small>
+      <small><span class="octicon octicon-mark-github"></span> Member of GitHub since <%= human_date current_user.member_since %></small><br />
+      <small><i class="ion-ios-briefcase"> </i> <%= current_user.company_to_show %></small><br />
+      <small><i class="ion-ios-navigate"> </i> <%= current_user.location_to_show %></small>
     </h2>
   </div>
 </div>
 
 <div class="row">
   <div class="col-lg-6">
-    <h4><span class="mega-octicon octicon-radio-tower"> </span> Your rooms</h4>
+    <h3><span class="ion-chatbubble-working"> </span> Your rooms</h3>
   </div>
 
   <div class="col-lg-6">
-    <h4><span class="mega-octicon octicon-rocket"> </span> Top Rooms <small>of last 24h</small></h4>
+    <h3><span class="ion-ribbon-a"> </span> Top Rooms <small>of last 24h</small></h3>
   </div>
 
   <!-- Your Rooms -->
-  <div class="well col-lg-2">
+  <div class="well col-lg-2 your-rooms">
     <ul class="nav nav-pills nav-stacked">
       <% for room in current_user.rooms %>
       <li>
@@ -39,18 +40,9 @@
 
   <!-- Top Room -->
   <div class="col-lg-10">
-
-    <div class="well col-room room-fire">
-
-    </div>
-
-    <div class="well col-room room-fire">
-
-    </div>
-
-    <div class="well col-room room-fire">
-
-    </div>
+  <% for top_room in @top_rooms %>
+    <%= react_component("TopRoom", { top_room: top_room.to_html }, { prerender: true }) %>
+  <% end %>
   </div>
   <!-- End Top Room -->
 </div>

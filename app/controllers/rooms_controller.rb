@@ -3,11 +3,14 @@ class RoomsController < ApplicationController
 
   before_filter :authenticate
 
-  def index ; end
+  def index
+    @top_rooms = RoomService.new.top_rooms
+  end
 
   def show
     @room = invoke_service(params[:id])
     current_user.update_last_channel(@room.uid)
+    MetricServices.room_accessed(current_user.uid, { room: @room.name })
     rescue
       redirect_to root_path, alert: "This room doesn't exists...Yet"
   end

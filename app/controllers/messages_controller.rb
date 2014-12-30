@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
     message.user = current_user
 
     message.save
+    MetricServices.message_sent(current_user.uid, { room: message.room.name })
     render nothing: true
   end
 

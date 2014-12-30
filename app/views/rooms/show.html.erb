@@ -12,9 +12,13 @@
     <div class="col-lg-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-      <h3 class="panel-title">What's happening now </h3> <%= link_to "See older chat", transcript_room_path(@room.name), { target: "_blank" } %>
+      <h3 class="panel-title"><span class="ion-speakerphone"> </span>What's happening now </h3>
+
+      <%= link_to transcript_room_path(@room.name), { target: "_blank" } do %>
+        <span class="ion-arrow-graph-down-left"> </span> See older chat
+      <% end  %>
       </div>
-      <div class="panel-body">
+      <div class="panel-body" id="chat-body">
         <ul class="list-unstyled chat" id="chat-room">
          <% for message in Message.last_messages_room(@room).reverse do %>
             <%= react_component('Comment', { message: message.to_send }, { prerender: true }) %>
@@ -32,8 +36,8 @@
 
   <!-- Public members -->
   <div class="col-lg-2 <%= hidden_members(@room) %>">
-    <span class="octicon octicon-person"></span> Public members
-    <div class="well col-lg-12">
+    <span class="ion-person-stalker"></span> Public members
+    <div class="well public-members col-lg-12">
       <ul class="nav nav-pills nav-stacked">
         <% for user in @room.public_members_sorted %>
         <li>
