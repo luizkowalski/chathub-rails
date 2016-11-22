@@ -1,5 +1,4 @@
 class TopRoom
-
   attr_accessor :avatar, :name, :count
 
   def initialize(avatar, name, count)

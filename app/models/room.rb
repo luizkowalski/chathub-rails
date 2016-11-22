@@ -15,10 +15,10 @@ class Room
   validates :name, presence: true
 
   def message_count
-    self.messages.count
+    messages.count
   end
 
   def public_members_sorted
-    public_members.sort_by{ |word| word.downcase }
+    public_members.sort_by(&:downcase)
   end
 end

@@ -7,15 +7,15 @@ class DashboardController < ApplicationController
 
   def clear_cache
     Rails.cache.clear
-    redirect_to action: "index"
+    redirect_to action: 'index'
   end
 
   def drop_room
     room = Room.find_by(uid: params[:room_uid])
     if room.delete
-      flash[:notice] = "Room deleted"
+      flash[:notice] = 'Room deleted'
     else
-      flash[:error] = "Could not delete room"
+      flash[:error] = 'Could not delete room'
     end
 
     redirect_to dashboard_path

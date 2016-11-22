@@ -1,5 +1,4 @@
 class WebSockets::TrackingController < WebsocketRails::BaseController
-
   def track_online
     WebsocketRails["room_#{current_user.last_channel}"].trigger :online_user, current_user.nickname
   end
@@ -9,7 +8,7 @@ class WebSockets::TrackingController < WebsocketRails::BaseController
     current_user.update_last_channel ''
   end
 
-  def online_room ; end
+  def online_room; end
 
-  def offline_room ; end
+  def offline_room; end
 end

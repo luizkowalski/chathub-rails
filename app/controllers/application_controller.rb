@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    redirect_to root_path, notice: "Please login with your GitHub account to continue" if !current_user
+    redirect_to root_path, notice: 'Please login with your GitHub account to continue' unless current_user
   end
 
   def authenticate_admin
-    redirect_to root_path, notice: "You are not allowed to access this page" if !admin?
+    redirect_to root_path, notice: 'You are not allowed to access this page' unless admin?
   end
 
   def admin?

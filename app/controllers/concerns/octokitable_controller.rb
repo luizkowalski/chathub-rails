@@ -15,5 +15,4 @@ module OctokitableController
     build_cache
     Octokit::Client.new(access_token: session[:token])
   end
-
 end

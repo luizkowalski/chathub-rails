@@ -1,22 +1,23 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 
-ruby '2.2.0'
+ruby '2.3.1'
 
-gem 'rails', '4.2.0'
+# Assets
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-Buttons'
+  gem 'rails-assets-Font-Awesome'
+end
+
+gem 'rails', '4.2.7.1'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
-# Assets
-gem 'rails-assets-bootstrap'
-gem 'rails-assets-Buttons'
-gem 'rails-assets-Font-Awesome'
-
 # Not from Rails Assets
 gem 'octicons-rails'
-gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
+gem 'react-rails' # , '~> 1.0.0.pre', github: 'reactjs/react-rails'
 
 # Database
 gem 'mongoid', '~> 4.0.0'
@@ -51,13 +52,13 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'byebug'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
   gem 'shoulda-matchers', require: false
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
   gem 'priscilla'
-  gem "rubycritic", :require => false
+  gem 'rubycritic', require: false
 end
 
 group :production do
