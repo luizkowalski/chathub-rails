@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
   def show
     @room = find_room
     current_user.update_last_channel(@room.uid)
-    # MetricServices.room_accessed(current_user.uid, room: room.name)
+    SaveMetricCommand.new.call(MetricTypes::ROOM_ACCESSED, current_user.uid, room: @room.name)
     @room
   rescue
     redirect_to root_path, alert: 'This room do not exists'
