@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
 
   def create
     store_github_token
-
     user = LoginService.new.call(octokit_client, auth_hash)
     session[:uid] = user.uid
     redirect_to rooms_path
