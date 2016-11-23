@@ -1,19 +1,7 @@
 class MessageService
-  include ActionView::Helpers::DateHelper
-  include ActionView::Helpers::SanitizeHelper
-
-  def initialize(message)
-    @message = message
-  end
-
-  def to_html
-    {
-      content: sanitize(@message.content),
-      user: @message.user.nickname,
-      avatar: @message.user.avatar,
-      uid: @message.uid,
-      created_at: @message.created_at,
-      date_formatted: time_ago_in_words(@message.created_at)
-    }
+  def send_message(content, room, user)
+    message = NewMessageCommand.new.call(content, room, user)
+    SendMessageToRoomCommand.new.call(message)
+    SaveMetricCommand.new.call(MetricTypes::MESSAGE_SENT, user.uid, room: room.name)
   end
 end

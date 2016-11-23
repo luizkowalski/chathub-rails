@@ -1,12 +1,12 @@
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
-require "active_model/railtie"
+require 'active_model/railtie'
 # require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
-require "sprockets/railtie"
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_view/railtie'
+require 'sprockets/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -31,5 +31,6 @@ module Chathub
     config.generators.javascripts = false
 
     config.mongoid.observers = :message_observer, :room_observer, :user_observer
+    config.middleware.delete Rack::Lock
   end
 end

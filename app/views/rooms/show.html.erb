@@ -21,7 +21,7 @@
       <div class="panel-body" id="chat-body">
         <ul class="list-unstyled chat" id="chat-room">
          <% for message in Message.last_messages_room(@room).reverse do %>
-            <%= react_component('Comment', { message: message.to_send }, { prerender: true }) %>
+            <%= react_component('Comment', { message: to_html(message) }, { prerender: true }) %>
           <% end %>
         </ul>
       </div>

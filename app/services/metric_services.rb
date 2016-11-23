@@ -1,9 +1,4 @@
 class MetricServices
-
-  def self.message_sent(user = nil, custom_data = {})
-    Metric.create(type: MetricTypes::MESSAGE_SENT, at: DateTime.now, user: user, custom_data: custom_data)
-  end
-
   def self.user_signed_in(user = nil, custom_data = {})
     Metric.create(type: MetricTypes::USER_SIGN_IN, at: DateTime.now, user: user, custom_data: custom_data)
   end

@@ -70,7 +70,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    colorize (0.8.1)
     connection_pool (2.2.1)
     daemons (1.2.4)
     debug_inspector (0.0.2)
@@ -98,8 +97,6 @@ GEM
     faye-websocket (0.10.5)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
-    figaro (1.1.1)
-      thor (~> 0.14)
     flay (2.8.1)
       erubis (~> 2.7.0)
       path_expander (~> 1.0)
@@ -143,8 +140,9 @@ GEM
       moped (~> 2.0.0)
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
-    mongoid-observers (0.3.0)
+    mongoid-observers (0.2.0)
       mongoid (>= 4.0.0)
+      rails-observers (~> 0.1.2)
     moped (2.0.7)
       bson (~> 3.0)
       connection_pool (~> 2.0)
@@ -177,10 +175,8 @@ GEM
     parser (2.3.1.2)
       ast (~> 2.2)
     path_expander (1.0.0)
-    priscilla (1.0.3)
-      colorize (~> 0.7)
-      rumoji (~> 0.3)
     public_suffix (2.0.4)
+    puma (3.6.2)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.5)
@@ -210,6 +206,8 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-observers (0.1.2)
+      activemodel (~> 4.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -264,7 +262,6 @@ GEM
       reek (~> 4.4)
       ruby_parser (~> 3.8)
       virtus (~> 1.0)
-    rumoji (0.5.0)
     sass (3.2.19)
     sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
@@ -336,17 +333,16 @@ DEPENDENCIES
   factory_girl_rails
   faker
   faraday-http-cache
-  figaro
   foreman
   google-analytics-rails
   jquery-rails
   mongoid (~> 4.0.0)
-  mongoid-observers
+  mongoid-observers (~> 0.2.0)
   octicons-rails
   octokit
   omniauth (~> 1.1.4)
   omniauth-github
-  priscilla
+  puma
   quiet_assets
   rails (= 4.2.7.1)
   rails-assets-Buttons!
@@ -359,7 +355,6 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   shoulda-matchers
   simplecov
-  thin
   twitter-text
   uglifier (>= 1.3.0)
   websocket-rails

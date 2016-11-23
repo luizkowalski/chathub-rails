@@ -17,10 +17,6 @@ class Message
 
   validates :content, :user, :room, presence: true
 
-  def to_send
-    MessageService.new(self).to_html
-  end
-
   def self.top_rooms_from_messages
     match = { '$match' => { 'created_at' => { '$gte' => 1.day.ago } } }
     group = { '$group' => { _id: '$room_id', count: { '$sum' => 1 } } }

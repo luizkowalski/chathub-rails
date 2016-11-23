@@ -1,13 +1,11 @@
 source 'https://rubygems.org'
-
-ruby '2.3.1'
-
-# Assets
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-Buttons'
   gem 'rails-assets-Font-Awesome'
 end
+
+ruby '2.3.1'
 
 gem 'rails', '4.2.7.1'
 gem 'sass-rails', '~> 4.0.3'
@@ -21,14 +19,13 @@ gem 'react-rails' # , '~> 1.0.0.pre', github: 'reactjs/react-rails'
 
 # Database
 gem 'mongoid', '~> 4.0.0'
-gem 'mongoid-observers'
+gem 'mongoid-observers', '~> 0.2.0'
 
 # Websocket
 gem 'websocket-rails'
 
 # General configuration
 gem 'foreman'
-gem 'figaro'
 
 # Text extraction
 gem 'twitter-text'
@@ -42,7 +39,7 @@ gem 'omniauth-github'
 gem 'faraday-http-cache'
 
 # Server
-gem 'thin'
+gem 'puma'
 
 # Analytics
 gem 'google-analytics-rails'
@@ -57,7 +54,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
-  gem 'priscilla'
   gem 'rubycritic', require: false
 end
 
