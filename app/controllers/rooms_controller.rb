@@ -8,18 +8,20 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = invoke_service(params[:id])
+    @room = find_room
     current_user.update_last_channel(@room.uid)
-    MetricServices.room_accessed(current_user.uid, room: @room.name)
+    # MetricServices.room_accessed(current_user.uid, room: room.name)
+    @room
   rescue
-    redirect_to root_path, alert: "This room doesn't exists...Yet"
+    redirect_to root_path, alert: 'This room do not exists'
   end
 
   def jump
-    @room = invoke_service(params[:room])
+    @room = find_room
     redirect_to room_path(@room.name)
-  rescue
-    redirect_to root_path, alert: "This room doesn't exists...Yet"
+  rescue => e
+    puts e
+    redirect_to root_path, alert: 'This room do not exists'
   end
 
   def transcript
@@ -29,7 +31,7 @@ class RoomsController < ApplicationController
 
   private
 
-  def invoke_service(name)
-    RoomService.new(name, octokit_client).find_or_create_room
+  def find_room
+    Room.find_by(name: params[:id]) || CreateRoomFromGithubCommand.new.call(octokit_client, octokit_client.org(params[:id]))
   end
 end
