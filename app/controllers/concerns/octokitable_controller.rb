@@ -13,6 +13,6 @@ module OctokitableController
 
   def octokit_client
     build_cache
-    Octokit::Client.new(access_token: session[:token])
+    @client ||= Octokit::Client.new(access_token: session[:token])
   end
 end

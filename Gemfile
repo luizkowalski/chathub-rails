@@ -5,7 +5,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-Font-Awesome'
 end
 
-ruby '2.3.1'
+ruby '2.3.3'
 
 gem 'rails', '4.2.7.1'
 gem 'sass-rails', '~> 4.0.3'
@@ -18,7 +18,7 @@ gem 'octicons-rails'
 gem 'react-rails' # , '~> 1.0.0.pre', github: 'reactjs/react-rails'
 
 # Database
-gem 'mongoid', '~> 4.0.0'
+gem 'mongoid', '~> 5.1.0'
 gem 'mongoid-observers', '~> 0.2.0'
 
 # Websocket

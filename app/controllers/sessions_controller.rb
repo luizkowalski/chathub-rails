@@ -4,12 +4,8 @@ class SessionsController < ApplicationController
   def create
     store_github_token
 
-    @user = User.find_or_create_from_auth_hash(auth_hash)
-    @user.update_last_login
-    UserService.new(@user, octokit_client).update_user_organizations
-
-    session[:uid] = @user.uid
-    MetricServices.user_signed_in(@user.uid)
+    user = LoginService.new.call(octokit_client, auth_hash)
+    session[:uid] = user.uid
     redirect_to rooms_path
   end
 

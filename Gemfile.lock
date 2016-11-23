@@ -55,7 +55,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bson (3.2.6)
+    bson (4.1.1)
     builder (3.2.2)
     byebug (9.0.6)
     codeclimate-engine-rb (0.4.0)
@@ -135,18 +135,16 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
-    mongoid (4.0.2)
+    mongo (2.3.1)
+      bson (~> 4.1)
+    mongoid (5.1.5)
       activemodel (~> 4.0)
-      moped (~> 2.0.0)
-      origin (~> 2.1)
+      mongo (~> 2.1)
+      origin (~> 2.2)
       tzinfo (>= 0.3.37)
     mongoid-observers (0.2.0)
       mongoid (>= 4.0.0)
       rails-observers (~> 0.1.2)
-    moped (2.0.7)
-      bson (~> 3.0)
-      connection_pool (~> 2.0)
-      optionable (~> 0.2.0)
     multi_json (1.12.1)
     multipart-post (2.0.0)
     nokogiri (1.6.8.1)
@@ -170,7 +168,6 @@ GEM
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
-    optionable (0.2.0)
     origin (2.2.2)
     parser (2.3.1.2)
       ast (~> 2.2)
@@ -336,7 +333,7 @@ DEPENDENCIES
   foreman
   google-analytics-rails
   jquery-rails
-  mongoid (~> 4.0.0)
+  mongoid (~> 5.1.0)
   mongoid-observers (~> 0.2.0)
   octicons-rails
   octokit
@@ -360,7 +357,7 @@ DEPENDENCIES
   websocket-rails
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.3.3p222
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
